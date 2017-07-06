@@ -13,14 +13,16 @@
         <!--Navigation Controller-->
         <scene sceneID="d3K-qZ-LxN">
             <objects>
-                <navigationController toolbarHidden="NO" id="gsc-IG-K0P" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gky-Ym-5Td">
+                <navigationController id="gsc-IG-K0P" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Gky-Ym-5Td">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="bIv-Xm-hPq">
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" id="bIv-Xm-hPq">
                         <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Q0n-ss-NnE"/>
@@ -30,20 +32,36 @@
             </objects>
             <point key="canvasLocation" x="-1736" y="3"/>
         </scene>
-        <!--View Controller-->
+        <!--WallpaperView-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WallpaperView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="WallpaperView" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X8h-mO-Zng">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X8h-mO-Zng">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SaB-Re-GUv">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" placeholder="YES" id="OFM-y1-CcQ"/>
+                                            <constraint firstAttribute="width" constant="50" placeholder="YES" id="tO8-o3-Fvk"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="SaB-Re-GUv" firstAttribute="top" secondItem="X8h-mO-Zng" secondAttribute="top" id="CWv-8e-EoY"/>
+                                    <constraint firstItem="SaB-Re-GUv" firstAttribute="leading" secondItem="X8h-mO-Zng" secondAttribute="leading" id="WHA-g7-MVM"/>
+                                    <constraint firstAttribute="bottom" secondItem="SaB-Re-GUv" secondAttribute="bottom" id="i3d-nv-1Ya"/>
+                                    <constraint firstAttribute="trailing" secondItem="SaB-Re-GUv" secondAttribute="trailing" id="rrI-Vk-h7G"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -54,7 +72,15 @@
                             <constraint firstAttribute="topMargin" secondItem="X8h-mO-Zng" secondAttribute="top" id="nyI-9g-BaK"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="dDU-hH-jyc"/>
+                    <navigationItem key="navigationItem" title="WallpaperView" id="dDU-hH-jyc"/>
+                    <connections>
+                        <outlet property="imageView" destination="SaB-Re-GUv" id="6p8-i6-t6i"/>
+                        <outlet property="imageViewBottomConstraint" destination="i3d-nv-1Ya" id="PPF-Tq-FuP"/>
+                        <outlet property="imageViewLeadingConstraint" destination="WHA-g7-MVM" id="lw9-2y-YeX"/>
+                        <outlet property="imageViewTopConstraint" destination="CWv-8e-EoY" id="tLs-yE-cyq"/>
+                        <outlet property="imageViewTrailingConstraint" destination="rrI-Vk-h7G" id="i7d-uU-1eD"/>
+                        <outlet property="scrollView" destination="X8h-mO-Zng" id="SfD-ee-Esi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
