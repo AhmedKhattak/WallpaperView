@@ -4,28 +4,27 @@
 //
 //  Created by Ahmed Khattak on 06/07/2017.
 //  Copyright © 2017 Ahmed Khattak. All rights reserved.
+//  
+//  Wallpaper credit : https://unsplash.com/@jakobowens1
 //
 
 import UIKit
 
 class ViewController: UIViewController {
 
+    //views
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
     
     
     //constraints
-    
-    
     @IBOutlet weak var imageViewTopConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var imageViewTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageViewLeadingConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
         
         makeNavbarTransparent()
         makeToolbarTransparent()
@@ -37,15 +36,9 @@ class ViewController: UIViewController {
         updateConstraintsForSize(size: self.view.frame.size)
         setInitialOffset()
         
-        
-        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+  
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -54,6 +47,7 @@ class ViewController: UIViewController {
     }
     
     
+    //Makes the navbarr transparent
     func makeNavbarTransparent(){
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.isTranslucent = true
@@ -61,6 +55,7 @@ class ViewController: UIViewController {
 
     }
     
+    //Makes the toolbar transparent
     func makeToolbarTransparent(){
         self.navigationController?.toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .bottom, barMetrics: .default)
         self.navigationController?.toolbar.isTranslucent = true
@@ -68,19 +63,23 @@ class ViewController: UIViewController {
 
     }
     
+    //Makes the navbar title color white
     func makeNavbarTitleColorWhite(){
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
     }
 
     
+    //Makes the status bar text white
     func makeStatusbarTextColorWhite(){
         UIApplication.shared.statusBarStyle = .lightContent
     }
     
+    //Setup imageView
     func setUpImage(){
         imageView.image = UIImage(named: "jakob")
     }
     
+    //Setup all the scrollView particulars
     func setUpScrollView(){
         scrollView.delegate = self
         scrollView.showsVerticalScrollIndicator = false
@@ -118,10 +117,13 @@ class ViewController: UIViewController {
     }
     
     
+    //sets the zoom scale needed to make image fit inside the devices view
     private func setZoomScale() {
         
         let minScale = (self.view.bounds.size.height) / (self.imageView.image?.size.height)!
+        
         if (self.imageView.image?.size.height)! > self.view.bounds.size.height {
+            
             scrollView.minimumZoomScale = minScale
             scrollView.zoomScale = minScale
             scrollView.maximumZoomScale = 8
@@ -144,12 +146,15 @@ class ViewController: UIViewController {
 }
 
 
-
+//Extension handles delegate duties
 extension ViewController:UIScrollViewDelegate {
+    
+    //Returns the view used for zooming
     public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
     
+    //Event is fired when zoom occurs
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
         print(scrollView.zoomScale)
         updateConstraintsForSize(size : view.bounds.size)
