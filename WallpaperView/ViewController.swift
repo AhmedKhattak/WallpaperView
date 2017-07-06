@@ -20,6 +20,25 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
+    
+    func makeNavbarTransparent(){
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+
+    }
+    
+    func makeToolbarTransparent(){
+        self.navigationController?.toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .bottom, barMetrics: .default)
+        self.navigationController?.toolbar.isTranslucent = true
+        self.navigationController?.toolbar.setShadowImage(UIImage(), forToolbarPosition: .bottom)
+
+    }
 
 }
+
+
+
+
 
